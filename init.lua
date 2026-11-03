@@ -229,13 +229,10 @@ do
   -- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
   -- Keybinds to make split navigation easier.
-  --  Use CTRL+<hjkl> to switch between windows
+  --  CTRL+<hjkl> switches between windows. These are set up by
+  --  vim-tmux-navigator (see SECTION 4) so they also move across tmux panes.
   --
   --  See `:help wincmd` for a list of all window commands
-  vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-  vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-  vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-  vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
   -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
   -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -348,6 +345,17 @@ do
   -- and then call its `setup()` function to start it with default settings.
   vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
   require('guess-indent').setup {}
+
+  -- Move between Neovim splits and tmux panes with the same CTRL+<hjkl> keys.
+  -- The tmux half is installed in ~/.tmux.conf (christoomey/vim-tmux-navigator via TPM).
+  -- We define the keymaps ourselves so they get descriptions in which-key.
+  vim.g.tmux_navigator_no_mappings = 1
+  vim.pack.add { gh 'christoomey/vim-tmux-navigator' }
+  vim.keymap.set('n', '<C-h>', '<cmd>TmuxNavigateLeft<CR>', { desc = 'Move focus to the left window/pane' })
+  vim.keymap.set('n', '<C-j>', '<cmd>TmuxNavigateDown<CR>', { desc = 'Move focus to the lower window/pane' })
+  vim.keymap.set('n', '<C-k>', '<cmd>TmuxNavigateUp<CR>', { desc = 'Move focus to the upper window/pane' })
+  vim.keymap.set('n', '<C-l>', '<cmd>TmuxNavigateRight<CR>', { desc = 'Move focus to the right window/pane' })
+  vim.keymap.set('n', '<C-\\>', '<cmd>TmuxNavigatePrevious<CR>', { desc = 'Move focus to the previous window/pane' })
 
   -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
   --
