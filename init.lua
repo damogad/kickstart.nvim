@@ -746,7 +746,7 @@ do
   local servers = {
     -- clangd = {},
     -- gopls = {},
-    -- pyright = {},
+    basedpyright = {}, -- Python: go to definition, references, type checking
     -- tsc = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
