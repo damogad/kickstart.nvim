@@ -125,6 +125,7 @@ do
   vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
   -- Don't wrap long lines
+  --  Markdown files override this and do wrap: see `after/ftplugin/markdown.lua`
   vim.o.wrap = false
 
   -- Enable break indent
