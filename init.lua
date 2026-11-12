@@ -1044,7 +1044,9 @@ do
   -- If separate modules need a specific order, require them explicitly instead:
   -- require 'custom.plugins.colorscheme'
   -- require 'custom.plugins.ui'
-  -- require 'custom.plugins.git'
+
+  -- Git diff view (diffview.nvim) and its <leader>g keymaps
+  require 'custom.plugins.git'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
