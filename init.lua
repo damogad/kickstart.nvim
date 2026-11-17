@@ -748,6 +748,7 @@ do
     -- clangd = {},
     -- gopls = {},
     basedpyright = {}, -- Python: go to definition, references, type checking
+    vtsls = {}, -- TypeScript
     -- tsc = {},
     --
     -- Some languages (like rust) have entire language plugins that can be useful:
