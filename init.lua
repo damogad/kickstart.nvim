@@ -747,7 +747,21 @@ do
   local servers = {
     -- clangd = {},
     -- gopls = {},
-    basedpyright = {}, -- Python: go to definition, references, type checking
+    -- Python: go to definition, references, type checking
+    basedpyright = {
+      settings = {
+        basedpyright = {
+          analysis = {
+            -- basedpyright defaults to "recommended" (very strict, many basedpyright-only rules).
+            -- Options from least to most strict: "off" (Pylance/VSCode default), "basic", "standard", "strict", "recommended", "all"
+            -- We can also overwrite the value in the corresponding pyproject.toml:
+            -- [tool.basedpyright]
+            -- typeCheckingMode = "standard"
+            typeCheckingMode = 'standard',
+          },
+        },
+      },
+    },
     vtsls = {}, -- TypeScript
     -- tsc = {},
     --
