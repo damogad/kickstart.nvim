@@ -762,6 +762,7 @@ do
         },
       },
     },
+    pytest_language_server = {}, -- pytest fixtures: go to definition, references, hover (basedpyright doesn't understand fixtures)
     vtsls = {}, -- TypeScript
     -- tsc = {},
     --
