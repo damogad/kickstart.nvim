@@ -553,6 +553,25 @@ do
     --   },
     -- },
     -- pickers = {}
+    --
+    -- Picker options can also be passed on demand from the command line, e.g.:
+    --   :Telescope find_files no_ignore=true            " also show .gitignored files
+    --   :Telescope find_files cwd=~/projects/other      " search another directory
+    --   :Telescope find_files search_dirs={"src","tests"}
+    --   :Telescope live_grep glob_pattern=*.lua
+    pickers = {
+      -- Include hidden files (e.g. .github/, .env.example) but skip the .git directory.
+      -- Files listed in .gitignore are still excluded.
+      find_files = {
+        find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
+      },
+      live_grep = {
+        additional_args = { '--hidden', '--glob', '!**/.git/*' },
+      },
+      grep_string = {
+        additional_args = { '--hidden', '--glob', '!**/.git/*' },
+      },
+    },
     extensions = {
       ['ui-select'] = { require('telescope.themes').get_dropdown() },
     },
