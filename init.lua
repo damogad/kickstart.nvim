@@ -1063,6 +1063,9 @@ do
 
   -- Git diff view (diffview.nvim) and its <leader>g keymaps
   require 'custom.plugins.git'
+
+  -- Project-wide search and replace (grug-far.nvim) on <leader>sR
+  require 'custom.plugins.search'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
